@@ -28,7 +28,6 @@
         //   alert(res)
         // })
         postCustInfo('gaoqc', '17704027838', '广东省深圳市').then(res => {
-          debugger
           alert(JSON.stringify(res.data))
         })
       }

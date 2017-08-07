@@ -26,7 +26,12 @@ export default async (url = '', data = {}, type = 'GET', method = 'fetch') => {
   //   mode: 'no-cors',
   //   cache: 'force-cache'
   // }
-  return Vue.axios.get(url)
+  debugger
+  return Vue.axios.request({
+    url: url,
+    method: type,
+    params: data
+  })
   // reture new Vue.$http.get(url, requestConfig)
   // if (window.fetch && method === 'fetch') {
   //   let requestConfig = {
