@@ -5,7 +5,7 @@
  * imgBaseUrl: 图片所在域名地址
  */
 
-let baseUrl = 'http://localhost:8000/v1'
+let baseUrl = 'http://localhost:8088/v1'
 let routerMode = 'history'
 let imgBaseUrl = 'http://images.cangdu.org/'
 
