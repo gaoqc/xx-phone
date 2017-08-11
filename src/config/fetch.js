@@ -1,21 +1,21 @@
 import { baseUrl } from './env'
 import Vue from 'vue'
 
-export default async (url = '', data = {}, type = 'GET', method = 'fetch') => {
+export default async (url = '', data = {}, type = 'GET') => {
   type = type.toUpperCase()
   url = baseUrl + url
+  // debugger
+  // if (type === 'GET') {
+  //   let dataStr = '' // 数据拼接字符串
+  //   Object.keys(data).forEach(key => {
+  //     dataStr += key + '=' + data[key] + '&'
+  //   })
 
-  if (type === 'GET') {
-    let dataStr = '' // 数据拼接字符串
-    Object.keys(data).forEach(key => {
-      dataStr += key + '=' + data[key] + '&'
-    })
-
-    if (dataStr !== '') {
-      dataStr = dataStr.substr(0, dataStr.lastIndexOf('&'))
-      url = url + '?' + dataStr
-    }
-  }
+  //   if (dataStr !== '') {
+  //     dataStr = dataStr.substr(0, dataStr.lastIndexOf('&'))
+  //     url = url + '?' + dataStr
+  //   }
+  // }
   // let requestConfig = {
   //   credentials: 'include',
   //   method: type,
@@ -26,11 +26,19 @@ export default async (url = '', data = {}, type = 'GET', method = 'fetch') => {
   //   mode: 'no-cors',
   //   cache: 'force-cache'
   // }
-  debugger
   return Vue.axios.request({
     url: url,
     method: type,
     params: data
+  }).then(res => {
+    data = res.data
+    if (data === null) {
+      throw new Error('res.data is emtpy!')
+    }
+    if (data.code !== '000000') {
+      throw new Error(data.msg)
+    }
+    return data.data
   })
   // reture new Vue.$http.get(url, requestConfig)
   // if (window.fetch && method === 'fetch') {

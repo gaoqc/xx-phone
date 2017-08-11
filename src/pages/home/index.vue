@@ -1,7 +1,7 @@
 <template>
   <div id="home">
-      <div  v-for="(item,i) in items" :key="i" :src="item.src">
-        <input type="checkbox" name="ckd"  :value="item.id"> {{item.name}}</input>
+      <div  v-for="(item,i) in items" :key="i" >
+        <input type="checkbox" name="ckd"  :value="item.id" :src="item.src" > {{item.name}}</input>
        </div>
           <router-link :to="{name: 'custInfo' }" ><div @click="next">下一步</div></router-link>
        <!-- <button type='submit' @click="next">下一步</button> -->
@@ -11,15 +11,23 @@
 
 <script>
   // import Vue from 'vue'
+  import { qryAllHomeAppliances } from '../../service/getData'
   export default {
     name: 'home',
     data () {
       return {
-        items: [{name: '冰箱', id: 'bx', src: '../../assets/images/bingxiang.png'}, {name: '空调', id: 'kt', src: '../../assets/images/kongtiao.png'}, {name: '洗衣机', id: 'xyj', src: '../../assets/images/xiyiji.png'}]
+        items: []
       }
+    },
+    mounted () {
+      qryAllHomeAppliances().then(res => {
+        this.items = res
+      })
     },
     methods: {
       next () {
+        // debugger
+        // alert(this.$data.items)
       }
     }
 

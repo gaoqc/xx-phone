@@ -1,10 +1,11 @@
 <template>
   <div id="custInfo">
     <form v-on:submit.prevent>
-      <p>称呢:<input type='text' name='name'></input></p>
-      <p>手机号码:<input type='text' name='name'></input></p>
-      <p>地址:<input type='text' name='name'></input></p>
+      <p>称呢:<input type='text' v-model='name' placeholder='姓名'></input></p>
+      <p>手机号码:<input type='text' v-model='phone' placeholder='手机号码'></input></p>
+      <p>地址:<input type='text' v-model='address' placeholder='地址'></input></p>
       <router-link :to="{name: 'home'}">上一步</router-link>
+      
       <input type="submit" name="submit" @click="custInfo" value="提交"/>
       </form>
   </div>
@@ -16,7 +17,11 @@
   export default {
     name: 'custInfo',
     data () {
-      return {}
+      return {
+        name: '',
+        phone: '',
+        address: ''
+      }
     },
     created () {
       // debugger
@@ -27,8 +32,8 @@
         // getUser().then(res => {
         //   alert(res)
         // })
-        postCustInfo('gaoqc', '17704027838', '广东省深圳市').then(res => {
-          alert(JSON.stringify(res.data))
+        postCustInfo(this.$data.name, this.$data.phone, this.$data.address).then(res => {
+          alert(JSON.stringify(res))
         })
       }
     }
