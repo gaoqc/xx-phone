@@ -29,7 +29,7 @@
   // import Vue from 'vue'
   import headTop from '@/components/header/head'
   import footGuide from '@/components/footer/footGuide'
-  import { postCustInfo } from '../../service/getData'
+  import { postCustInfo } from '@/service/getData'
   export default {
     name: 'custInfo',
     data () {

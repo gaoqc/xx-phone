@@ -6,16 +6,20 @@ import VueAxios from 'vue-axios'
 
 Vue.use(Router)
 Vue.use(VueAxios, axios)
-const home = r => require.ensure([], () => r(require('../pages/home')), 'home')
-const custInfo = r => require.ensure([], () => r(require('../pages/custInfo')), 'custInfo')
-const order = r => require.ensure([], () => r(require('../pages/order')), 'order')
-const profile = r => require.ensure([], () => r(require('../pages/profile/profile')), 'profile')
-const newsIndex = r => require.ensure([], () => r(require('../pages/news/news')), 'profile')
-// const info = r => require.ensure([], () => r(require('../pages/profile/children/info')), 'info')
-// const address = r => require.ensure([], () => r(require('../page/profile/children/children/address')), 'address')
-// const add = r => require.ensure([], () => r(require('../page/profile/children/children/children/add')), 'add')
-// const addDetail = r => require.ensure([], () => r(require('../page/profile/children/children/children/children/addDetail')), 'addDetail')
-// const setusername = r => require.ensure([], () => r(require('../pages/profile/children/setusername')), 'setusername')
+/** 首页 begin **/
+const home = r => require.ensure([], () => r(require('@/pages/home/home')), 'home')
+const custInfo = r => require.ensure([], () => r(require('@/pages/home/custInfo/custInfo')), 'custInfo')
+/** 首页 end  **/
+/**  知识库 begin  **/
+const newsIndex = r => require.ensure([], () => r(require('@/pages/news/news')), 'profile')
+/**  知识库 end  **/
+/**  订单 begin **/
+const order = r => require.ensure([], () => r(require('@/pages/order/order')), 'order')
+/**  订单 end  **/
+/** 我的 begin  */
+const profile = r => require.ensure([], () => r(require('@/pages/profile/profile')), 'profile')
+/** 我的 end  */
+
 export default new Router({
   routes: [
     {

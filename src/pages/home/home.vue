@@ -2,7 +2,7 @@
   <div>
     <!-- head -->
     <head-top signin-up='home'>
-      <span slot='logo' class="head_logo" @click="reload">修修</span>
+      <span slot='logo' class="head_logo" @click="reload">爱家电</span>
     </head-top>
     <!-- head end-->
     <!-- body -->
@@ -19,7 +19,7 @@
       <p>
         <h3>安装说明:</h3>
       </p>
-      <textarea rows="10" cols="50" v-model="fixMsg" placeholder="对保修家电的说明"></textarea>
+      <textarea rows="10" cols="50" v-model="fixMsg" placeholder="对报修家电的说明"></textarea>
       <router-link :to="{name: 'custInfo' }">
         <div @click="next" class="next">下一步</div>
       </router-link>
