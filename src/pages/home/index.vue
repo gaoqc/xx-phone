@@ -1,22 +1,48 @@
 <template>
-  <div id="home">
-      <div  v-for="(item,i) in items" :key="i" >
-        <input type="checkbox" name="ckd"  :value="item.id" :src="item.src" > {{item.name}}</input>
-       </div>
-          <router-link :to="{name: 'custInfo' }" ><div @click="next">下一步</div></router-link>
-       <!-- <button type='submit' @click="next">下一步</button> -->
-
+  <div>
+    <!-- head -->
+    <head-top signin-up='home'>
+      <span slot='logo' class="head_logo" @click="reload">修修</span>
+    </head-top>
+    <!-- head end-->
+    <!-- body -->
+  
+    <div>
+      <div class="app_list_container">
+        <div v-for="(item,i) in items" :key="i" class="app">
+          <figure>
+            <img :src="imageBaseUrl + item.src" />
+            <figcaption>{{item.name}}</figcaption>
+          </figure>
+        </div>
+      </div>
+      <p>
+        <h3>安装说明:</h3>
+      </p>
+      <textarea rows="10" cols="50" v-model="fixMsg" placeholder="对保修家电的说明"></textarea>
+      <router-link :to="{name: 'custInfo' }">
+        <div @click="next" class="next">下一步</div>
+      </router-link>
+    </div>
+  
+    <foot-guide></foot-guide>
   </div>
 </template>
 
+
 <script>
   // import Vue from 'vue'
-  import { qryAllHomeAppliances } from '../../service/getData'
+  import headTop from '@/components/header/head'
+  import footGuide from '@/components/footer/footGuide'
+  import { qryAllHomeAppliances } from '@/service/getData'
+  import '@/style/swiper.min.css'
   export default {
     name: 'home',
     data () {
       return {
-        items: []
+        items: [],
+        fixMsg: '',
+        imageBaseUrl: 'static/images/'
       }
     },
     mounted () {
@@ -24,10 +50,17 @@
         this.items = res
       })
     },
+    components: {
+      headTop,
+      footGuide
+    },
     methods: {
       next () {
         // debugger
-        // alert(this.$data.items)
+      },
+      // 点击图标刷新页面
+      reload () {
+        window.location.reload()
       }
     }
 
@@ -35,19 +68,37 @@
 
 </script>
 
-<style>
+<style lang="scss" scoped>
+  @import 'src/style/mixin';
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
+    /* color: #2c3e50; */
     margin-top: 60px;
   }
-  /* #prod {
-   height: 100%;
+  .next{
+   position: fixed;
     width: 100%;
-   background: url(../../assets/images/bingxiang.png) no-repeat;
- }  */
+    bottom: 3.0rem;
+    height: 1.95rem;
+    text-align: center;
+    background-color: $blue; 
+  }
+ 
+  .app_list_container{
+    display:flex;
+    // @include fj(center);
+     flex-wrap: wrap;
+     div{
+      width: 144px; 
+      padding: 4px;
+     }
+		
+  }
+ textarea{
+   border: 2px solid;
+ } 
 
 </style>
