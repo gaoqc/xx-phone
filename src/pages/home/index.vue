@@ -82,7 +82,7 @@
    position: fixed;
     width: 100%;
     bottom: 3.0rem;
-    height: 1.95rem;
+    height: 1.95˚rem;
     text-align: center;
     background-color: $blue; 
   }
