@@ -1,14 +1,8 @@
 <template>
   <div>
-    <!-- head -->
-    <!-- <head-top signin-up='home'>
-      <span slot='logo' class="head_logo" @click="reload">爱家电</span>
-    </head-top> -->
-    <head-top :head-title="headTitle" ></head-top>
-    <!-- head end-->
-    <!-- body -->
+    
   
-    <!-- <div>
+    <div>
       <div class="app_list_container">
         <div v-for="(item,i) in items" :key="i" class="app">
           <figure>
@@ -24,18 +18,14 @@
       <router-link :to="{name: 'custInfo' }">
         <div @click="next" class="next">下一步</div>
       </router-link>
-    </div> -->
-    <router-view></router-view>
+    </div>
   
-    <foot-guide></foot-guide>
   </div>
 </template>
 
 
 <script>
   // import Vue from 'vue'
-  import headTop from '@/components/header/head'
-  import footGuide from '@/components/footer/footGuide'
   import { qryAllHomeAppliances } from '@/service/getData'
   import '@/style/swiper.min.css'
   export default {
@@ -44,18 +34,13 @@
       return {
         items: [],
         fixMsg: '',
-        imageBaseUrl: 'static/images/',
-        headTitle: '爱家电'
+        imageBaseUrl: 'static/images/'
       }
     },
     mounted () {
       qryAllHomeAppliances().then(res => {
         this.items = res
       })
-    },
-    components: {
-      headTop,
-      footGuide
     },
     methods: {
       next () {

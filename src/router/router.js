@@ -9,6 +9,7 @@ Vue.use(VueAxios, axios)
 /** 首页 begin **/
 const home = r => require.ensure([], () => r(require('@/pages/home/home')), 'home')
 const custInfo = r => require.ensure([], () => r(require('@/pages/home/custInfo/custInfo')), 'custInfo')
+const appselect = r => require.ensure([], () => r(require('@/pages/home/appsSelect/apps')), 'apps')
 /** 首页 end  **/
 /**  知识库 begin  **/
 const newsIndex = r => require.ensure([], () => r(require('@/pages/news/news')), 'profile')
@@ -30,12 +31,19 @@ export default new Router({
         {
           path: '',
           name: 'home',
-          component: home
-        },
-        {
-          path: '/custInfo',
-          name: 'custInfo',
-          component: custInfo
+          component: home,
+          children: [
+            {
+              path: '/custInfo',
+              name: 'custInfo',
+              component: custInfo
+            },
+            {
+              path: '/apps',
+              name: 'apps',
+              component: appselect
+            }
+          ]
         },
         {
           path: '/news',

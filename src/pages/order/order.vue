@@ -1,9 +1,7 @@
 <template>
   <div>
     <!-- head -->
-    <head-top signin-up='home'>
-      <span slot='logo' class="head_logo" @click="reload">爱家电</span>
-    </head-top>
+    <head-top :head-title="headTitle" goBack="true"></head-top>
     <!-- head end-->
     <!-- body -->
   
@@ -25,6 +23,7 @@
     name: 'home',
     data () {
       return {
+        headTitle: '订单'
       }
     },
     mounted () {
