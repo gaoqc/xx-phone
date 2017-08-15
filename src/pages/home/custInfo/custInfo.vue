@@ -37,7 +37,7 @@
         name: '',
         phone: '',
         address: '',
-        headTitle: '修修'
+        headTitle: '报修'
       }
     },
     created () {

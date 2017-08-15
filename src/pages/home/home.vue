@@ -8,7 +8,7 @@
     <!-- head end-->
     <!-- body -->
   
-    <!-- <div>
+     <div>
       <div class="app_list_container">
         <div v-for="(item,i) in items" :key="i" class="app">
           <figure>
@@ -24,8 +24,7 @@
       <router-link :to="{name: 'custInfo' }">
         <div @click="next" class="next">下一步</div>
       </router-link>
-    </div> -->
-    <router-view></router-view>
+    </div> 
   
     <foot-guide></foot-guide>
   </div>
