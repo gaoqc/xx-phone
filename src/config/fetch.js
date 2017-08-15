@@ -36,7 +36,12 @@ export default async (url = '', data = {}, type = 'GET') => {
       throw new Error('res.data is emtpy!')
     }
     if (data.code !== '000000') {
-      throw new Error(data.msg)
+      // 100003 表示未登录,需要跳转到登录页面
+      if (data.code === '100003') {
+        window.location.href = '/#/login'
+      } else {
+        throw new Error(data.msg)
+      }
     }
     return data.data
   })

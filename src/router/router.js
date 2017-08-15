@@ -20,6 +20,10 @@ const order = r => require.ensure([], () => r(require('@/pages/order/order')), '
 /** 我的 begin  */
 const profile = r => require.ensure([], () => r(require('@/pages/profile/profile')), 'profile')
 /** 我的 end  */
+/** 登录 begin */
+const login = r => require.ensure([], () => r(require('@/pages/login/login')), 'login')
+
+/** 登录 end */
 
 export default new Router({
   routes: [
@@ -88,6 +92,16 @@ export default new Router({
       //     //   component: service
       //     // }
       //     ]
+        },
+        {
+          path: '/login',
+          name: 'login',
+          component: login
+        },
+        {
+          path: 'ogin#/',
+          name: 'login',
+          component: login
         }
       ]
     }
