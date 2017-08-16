@@ -26,6 +26,9 @@
           <span>...</span>
         </div>
       </section>
+      <!-- <section class="input_container">
+        <input type="text" placeholder="手机号码" v-model.lazy="phoneNumber">
+      </section> -->
       <section class="input_container captcha_code_container">
         <input type="text" placeholder="验证码" maxlength="4" v-model="codeNumber">
         <div class="img_change_img">
@@ -117,7 +120,7 @@
         // let res = await getcaptchas()
         // this.captchaCodeImg = res.code
         getcaptchas().then(res => {
-          this.captchaCodeImg = res
+          this.captchaCodeImg = res.data
         })
       },
       // 获取短信验证码
@@ -129,7 +132,7 @@
             if (this.computedTime === 0) {
               clearInterval(this.timer)
             }
-          }, 1000)
+          }, 6000)
           // 判读用户是否存在
           let exsis = await checkExsis(this.phoneNumber, 'mobile')
           if (exsis.message) {
@@ -183,12 +186,12 @@
           this.userInfo = await accountLogin(this.userAccount, this.passWord, this.codeNumber)
         }
         // 如果返回的值不正确，则弹出提示框，返回的值正确则返回上一页
-        if (!this.userInfo.user_id) {
+        if (this.userInfo.code !== '000000') {
           this.showAlert = true
-          this.alertText = this.userInfo.message
+          this.alertText = this.userInfo.msg
           if (!this.loginWay) this.getCaptchaCode()
         } else {
-          this.RECORD_USERINFO(this.userInfo)
+        //   this.RECORD_USERINFO(this.userInfo)
           this.$router.go(-1)
         }
       },
@@ -283,7 +286,7 @@
   .login_container {
     margin: 0 .5rem 1rem;
     @include sc(.7rem, #fff);
-    background-color: #4cd964;
+    background-color: $blue;
     padding: .5rem 0;
     border: 1px;
     border-radius: 0.15rem;

@@ -84,11 +84,11 @@
   }
   .submit{
     position: fixed;
-    left: .1rem;
+    left: .4rem;
     height: 2.5rem;
     text-align: center;
     bottom: 2.5rem;
-    width: 100%;
+    width: 95%;
     background-color: $blue; 
     
   }

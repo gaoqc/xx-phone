@@ -81,12 +81,19 @@
     margin-top: 60px;
   }
   .next{
-   position: fixed;
-    width: 100%;
-    bottom: 3.0rem;
-    height: 1.95˚rem;
+     position: fixed;
+    left: .4rem;
+    height: 2.5rem;
     text-align: center;
+    bottom: 2.5rem;
+    width: 95%;
     background-color: $blue; 
+  //  position: fixed;
+  //   width: 100%;
+  //   bottom: 3.0rem;
+  //   height: 1.95˚rem;
+  //   text-align: center;
+  //   background-color: $blue; 
   }
  
   .app_list_container{
