@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import App from '../App'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-
+axios.defaults.withCredentials = true
 Vue.use(Router)
 Vue.use(VueAxios, axios)
 /** 首页 begin **/

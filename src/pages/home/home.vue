@@ -49,7 +49,8 @@
     },
     mounted () {
       qryAllHomeAppliances().then(res => {
-        this.items = res
+        // debugger
+        this.items = res.data
       })
     },
     components: {
