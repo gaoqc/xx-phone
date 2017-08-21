@@ -37,7 +37,11 @@
         name: '',
         phone: '',
         address: '',
-        headTitle: '报修'
+        headTitle: '报修',
+        appsType: '',
+        appsBrand: '',
+        imageids: '',
+        appsDesc: ''
       }
     },
     created () {

@@ -21,7 +21,7 @@
         <h3>安装说明:</h3>
       </p>
       <textarea rows="10" cols="30" v-model="fixMsg" placeholder="对报修家电的说明"></textarea>
-      <router-link :to="{name: 'custInfo' }">
+      <router-link :to="{name: 'contact' }">
         <div @click="next" class="next">下一步</div>
       </router-link>
     </div> 
