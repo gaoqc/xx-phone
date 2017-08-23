@@ -37,16 +37,33 @@
   import footGuide from '@/components/footer/footGuide'
   import { qryAllHomeAppliances } from '@/service/getData'
   import '@/style/swiper.min.css'
+  import { mapActions } from 'vuex'
+
   export default {
     name: 'home',
     data () {
       return {
         items: [],
-        fixMsg: '',
+        // fixMsg: '',
         imageBaseUrl: 'static/images/',
         headTitle: '爱家电'
       }
     },
+    computed: {
+      fixMsg: {
+        get () {
+          return this.$store.state.fixMsg
+        },
+        set (val) {
+          this.$store.commit('updateFixMsg', val)
+        }
+      }
+    },
+    // }mapState([
+    //   'appTypeId',
+    //   'vendor',
+    //   'fixMsg'
+    // ]),
     mounted () {
       qryAllHomeAppliances().then(res => {
         // debugger
@@ -58,8 +75,14 @@
       footGuide
     },
     methods: {
+      ...mapActions([
+        'getUserInfo',
+        'appInfo'
+      ]),
       next () {
-        // debugger
+        this.$store.commit('udpateAppTypeId', 2)
+        this.$store.commit('updateVendorId', 2)
+        // this.appInfo('xyj', 'meide', this.fixMsg)
       },
       // 点击图标刷新页面
       reload () {

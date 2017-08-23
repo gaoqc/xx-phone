@@ -15,7 +15,7 @@
         {{item.userDomain}}
        {{item.userAddDetail}} 
         </p>
-        <input type="radio" name="addr" :key="item.Id"></input>  
+        <input type="radio" name="addr" :value="item.Id" v-model="addrId" id="item.Id"></input>  
         
       </section>
        <section class="next">
@@ -49,6 +49,16 @@
         headTitle: '联系信息'
       }
     },
+    computed: {
+      addrId: {
+        get () {
+          return this.$store.addressId
+        },
+        set (val) {
+          this.$store.commit('updateAddrId', val)
+        }
+      }
+    },
     created () {
       qryUserAddress().then(res => {
         this.addresses = res.data
@@ -68,6 +78,9 @@
     //       alert(JSON.stringify(res))
     //     })
     //   }
+      next () {
+
+      }
     }
 
   }
