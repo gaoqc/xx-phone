@@ -12,4 +12,4 @@ export const qryAddr = (addrId) => fetch('/userAddress/qryAddr', {addrId: addrId
 export const qryVendor = (vendorId) => fetch('/vendor/qryVendor', {vendorId: vendorId})
 export const qryHomeAppKind = (kindId) => fetch('/product/qryHomeAppKind', {kindId: kindId})
 export const createOrder = (appTypeId, vendorId, fixMsg, addrId) => fetch('/cust/addOrder', {appTypeId: appTypeId, vendorId: vendorId, fixMsg: fixMsg, addrId: addrId}, 'post')
-
+export const qryOrderList = () => fetch('/cust/qryOrderList')

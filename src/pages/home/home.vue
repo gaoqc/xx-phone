@@ -12,19 +12,19 @@
        <p>
        家电类型:
        <select v-model="appTypeId">
-      <option value="bingxiang">冰箱</option>
-      <option value="kongtiao">空调</option>
-      <option value="reshuiqi">热水器</option>
-      <option value="xiyiji">洗衣机</option>
+         <option v-for="item in appTypes" :value="item.Id" :key="item.Id">
+           {{item.name}}
+         </option>
+      
     </select>
        </p>
+
        <p>
          厂商:
         <select v-model="vendorId">
-      <option value="meidi">美的</option>
-      <option value="geli">格力</option>
-      <option value="haier">海尔</option>
-      <option value="suboer">苏泊尔</option> 
+          <option v-for="item in vendors" :value="item.Id" :key="item.Id">
+            {{item.name}}
+          </option>
         </select>
        </p>
     
@@ -56,7 +56,7 @@
   // import Vue from 'vue'
   import headTop from '@/components/header/head'
   import footGuide from '@/components/footer/footGuide'
-  import { qryAllHomeAppliances } from '@/service/getData'
+  import { qryAllHomeAppliances, qryVendor, qryHomeAppKind } from '@/service/getData'
   import '@/style/swiper.min.css'
   import { mapActions } from 'vuex'
 
@@ -65,6 +65,8 @@
     data () {
       return {
         items: [],
+        vendors: [],
+        appTypes: [],
         // fixMsg: '',
         imageBaseUrl: 'static/images/',
         headTitle: '爱家电'
@@ -97,15 +99,16 @@
 
       }
     },
-    // }mapState([
-    //   'appTypeId',
-    //   'vendor',
-    //   'fixMsg'
-    // ]),
     mounted () {
       qryAllHomeAppliances().then(res => {
         // debugger
         this.items = res.data
+      })
+      qryVendor().then(res => {
+        this.vendors = res.data
+      })
+      qryHomeAppKind().then(res => {
+        this.appTypes = res.data
       })
     },
     components: {
@@ -118,8 +121,8 @@
         'appInfo'
       ]),
       next () {
-        this.$store.commit('udpateAppTypeId', 2)
-        this.$store.commit('updateVendorId', 2)
+        // this.$store.commit('udpateAppTypeId', 2)
+        // this.$store.commit('updateVendorId', 2)
         // this.appInfo('xyj', 'meide', this.fixMsg)
       },
       // 点击图标刷新页面

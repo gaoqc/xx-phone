@@ -113,7 +113,6 @@
         // var appTypeId = this.$store.state.appTypeId
         // var vendorId = this.$store.state.vendorId
         createOrder(this.appTypeId, this.vendorId, this.fixMsg, this.addrId).then(res => {
-          alert(res.msg)
           this.$router.push('/order')
         })
       }
