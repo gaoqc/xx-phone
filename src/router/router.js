@@ -8,9 +8,9 @@ Vue.use(Router)
 Vue.use(VueAxios, axios)
 /** 首页 begin **/
 const home = r => require.ensure([], () => r(require('@/pages/home/home')), 'home')
-const custInfo = r => require.ensure([], () => r(require('@/pages/home/custInfo/custInfo')), 'custInfo')
-const contact = r => require.ensure([], () => r(require('@/pages/home/custInfo/contact')), 'contact')
-const orderSure = r => require.ensure([], () => r(require('@/pages/home/custInfo/orderSure')), 'orderSure')
+const custInfo = r => require.ensure([], () => r(require('@/pages/home/child/custInfo')), 'custInfo')
+const contact = r => require.ensure([], () => r(require('@/pages/home/child/contact')), 'contact')
+const orderSure = r => require.ensure([], () => r(require('@/pages/home/child/orderSure')), 'orderSure')
 // const appselect = r => require.ensure([], () => r(require('@/pages/home/appsSelect/apps')), 'apps')
 /** 首页 end  **/
 /**  知识库 begin  **/
