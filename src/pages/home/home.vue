@@ -9,14 +9,35 @@
     <!-- body -->
   
      <div>
-      <div class="app_list_container">
-        <div v-for="(item,i) in items" :key="i" class="app">
+       <p>
+       家电类型:
+       <select v-model="appTypeId">
+      <option value="bingxiang">冰箱</option>
+      <option value="kongtiao">空调</option>
+      <option value="reshuiqi">热水器</option>
+      <option value="xiyiji">洗衣机</option>
+    </select>
+       </p>
+       <p>
+         厂商:
+        <select v-model="vendorId">
+      <option value="meidi">美的</option>
+      <option value="geli">格力</option>
+      <option value="haier">海尔</option>
+      <option value="suboer">苏泊尔</option> 
+        </select>
+       </p>
+    
+      <!-- <div class="app_list_container">
+        <div v-for="(item,i) in items" :key="i" class="apps">
           <figure>
             <img :src="imageBaseUrl + item.src" />
+            <input type="checkbox"  :value="item.id" v-model="appTypeIds">
             <figcaption>{{item.name}}</figcaption>
           </figure>
         </div>
-      </div>
+      </div> -->
+
       <p>
         <h3>安装说明:</h3>
       </p>
@@ -57,6 +78,23 @@
         set (val) {
           this.$store.commit('updateFixMsg', val)
         }
+      },
+      appTypeId: {
+        get () {
+          return this.$store.state.appTypeId
+        },
+        set (val) {
+          this.$store.commit('udpateAppTypeId', val)
+        }
+      },
+      vendorId: {
+        get () {
+          return this.$store.state.vendorId
+        },
+        set (val) {
+          this.$store.commit('updateVendorId', val)
+        }
+
       }
     },
     // }mapState([
@@ -100,7 +138,7 @@
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
+    // text-align: center;
     /* color: #2c3e50; */
     margin-top: 60px;
   }
@@ -108,7 +146,7 @@
      position: fixed;
     left: .4rem;
     height: 2.5rem;
-    text-align: center;
+    // 144px
     bottom: 2.5rem;
     width: 95%;
     background-color: $blue; 
@@ -116,17 +154,23 @@
   //   width: 100%;
   //   bottom: 3.0rem;
   //   height: 1.95˚rem;
-  //   text-align: center;
+    text-align: center;
   //   background-color: $blue; 
   }
  
   .app_list_container{
     display:flex;
+   text-align: left; 
     // @include fj(center);
      flex-wrap: wrap;
      div{
-      width: 144px; 
+      width: 100%; 
       padding: 4px;
+      figure{
+       figcaption{
+         padding-left: 0.4rem
+       }
+      }
      }
 		
   }

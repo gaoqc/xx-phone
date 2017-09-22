@@ -7,6 +7,7 @@ Vue.use(Vuex)
 const state = {
   appTypeId: '', // 家电ID
   vendorId: '', // 厂商
+  // series: '', // 系列
   fixMsg: '', // 描述
   addrId: ''
 }
